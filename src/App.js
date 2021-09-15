@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import './app.css'
+import Header from './components/Header';
+import {useState} from 'react'
+import Counter from './counter'
+import Employee from './employee'
+
 
 function App() {
+  const [count,setCount] =useState(0)
+  const data = 'born for jesus christ who is the son of god'
+  const addcount=()=>
+  {
+    setCount(count+1)
+    console.log(count);
+  }
+  let obj =
+  {
+    title:'1st counter',
+    count
+  }
+
+  let emp =[{name:'Jesus',description:'Son of god'},
+            {name:'Joseph',description:'Father of jesus'},
+            {name:'Mary',description:'Mother of jesus'}]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header/>
+    <h1 style={{color:'red'}}   >hello world countervalue:{count}</h1>
+    <p>hello i am pour soul {data}</p>
+    <button onClick={addcount}> Counter: {count}</button>
+    <Counter {...obj}/>
+    <Counter title='2nd counter' count={count}/>
+
+    {
+      emp.map((obj,index)=>{
+        return(
+          <Employee key={index} {...obj}/>
+        )
+      })
+    }
+
     </div>
   );
 }
