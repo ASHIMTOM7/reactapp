@@ -3,10 +3,12 @@ import Header from './components/Header';
 import {useState} from 'react'
 import Counter from './counter'
 import Employee from './employee'
+import Counter2 from './counter2'
 
 
 function App() {
   const [count,setCount] =useState(0)
+  const [state,setState] =useState(false)
   const data = 'born for jesus christ who is the son of god'
   const addcount=()=>
   {
@@ -30,6 +32,8 @@ function App() {
     <button onClick={addcount}> Counter: {count}</button>
     <Counter {...obj}/>
     <Counter title='2nd counter' count={count}/>
+    <h2 onClick={()=>setState(!state)}>Show/Hide</h2>
+    {state && <Counter counter={count}/>}
 
     {
       emp.map((obj,index)=>{
@@ -38,6 +42,8 @@ function App() {
         )
       })
     }
+
+    <Counter2 />
 
     </div>
   );

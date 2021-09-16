@@ -1,6 +1,11 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
 function Counter(props) {
+    useEffect(()=>{
+        console.log('Mounting...');
+        return ()=>{console.log('Unmounting...');}
+    })
+
     return (
         <div>
         
